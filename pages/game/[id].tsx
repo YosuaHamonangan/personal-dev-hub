@@ -2,11 +2,18 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styles from '../../styles/Game.module.css';
+import useSWR from 'swr';
 
-export default function Home() {
-	const router = useRouter()
-	const { id } = router.query
-	console.log(id)
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export default function Game() {
+	const router = useRouter();
+	const { id } = router.query;
+
+	const { data, error } = useSWR(id ? `/api/game-info?id=${id}` : null, id ? fetcher : null);
+	if(error) var content = <div>Failed to load</div>;
+	else if(!data) var content = <div>Loading...</div>;
+	else var content = <iframe className={styles.main} src={data.url} frameBorder={0} />;
 
 	return (
 		<div className={styles.container}>
@@ -17,7 +24,7 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<iframe className={styles.main} src="https://yovic-dino-game.netlify.app" frameBorder={0} />
+				{content}
 			</main>
 
 			<footer className={styles.footer}>
