@@ -8,7 +8,11 @@ type Data = {
 var dummyData: Data[] = [
   {
     id: 'dino',
-    url: 'https://yovic-dino-game.netlify.app',
+    url: 'https://ydh-game-dino.netlify.app',
+  },
+  {
+    id: 'hockey',
+    url: 'https://ydh-game-hockey.netlify.app',
   },
 ]
 

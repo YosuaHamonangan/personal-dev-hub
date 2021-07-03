@@ -24,9 +24,9 @@ export default function Home() {
             <p>Chrome Dino like game</p>
           </a>
 
-          <a href="/" className={styles.card}>
-            <h2>Coming soon &rarr;</h2>
-            <p>Later</p>
+          <a href="/game/hockey" className={styles.card}>
+            <h2>Hockey Game &rarr;</h2>
+            <p>Air Hockey like game</p>
           </a>
 
           <a href="/" className={styles.card}>
